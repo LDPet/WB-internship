@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Order {{.OrderUid}}</title>
+</head>
+<body>
+<b>Order</b>
+<ul>
+    <li>OrderUid: {{.OrderUid}}</li>
+    <li>TrackNumber: {{.TrackNumber}}</li>
+    <li>Entry: {{.Entry}}</li>
+    <li>OrderUid: {{.OrderUid}}</li>
+    <ul>
+        <b>Delivery</b>
+        <li>Name   : {{.Delivery.Name   }}</li>
+        <li>Phone  : {{.Delivery.Phone  }}</li>
+        <li>Zip    : {{.Delivery.Zip    }}</li>
+        <li>City   : {{.Delivery.City   }}</li>
+        <li>Address: {{.Delivery.Address}}</li>
+        <li>Region : {{.Delivery.Region }}</li>
+    </ul>
+    <ul>
+        <b>Payment</b>
+        <li>Transaction : {{.Payment.Transaction }}</li>
+        <li>RequestId   : {{.Payment.RequestId   }}</li>
+        <li>Currency    : {{.Payment.Currency    }}</li>
+        <li>Provider    : {{.Payment.Provider    }}</li>
+        <li>Amount      : {{.Payment.Amount      }}</li>
+        <li>PaymentDt   : {{.Payment.PaymentDt   }}</li>
+        <li>Bank        : {{.Payment.Bank        }}</li>
+        <li>DeliveryCost: {{.Payment.DeliveryCost}}</li>
+        <li>GoodsTotal  : {{.Payment.GoodsTotal  }}</li>
+        <li>CustomFee   : {{.Payment.CustomFee   }}</li>
+    </ul>
+    <ul><b>Items</b></ul>
+    {{range .Items}}
+    <ul>
+        <ul>
+            <b>Item</b>
+            <li>ChrtId     : {{.ChrtId     }}</li>
+            <li>TrackNumber: {{.TrackNumber}}</li>
+            <li>Price      : {{.Price      }}</li>
+            <li>Rid        : {{.Rid        }}</li>
+            <li>Name       : {{.Name       }}</li>
+            <li>Sale       : {{.Sale       }}</li>
+            <li>Size       : {{.Size       }}</li>
+            <li>TotalPrice : {{.TotalPrice }}</li>
+            <li>NmId       : {{.NmId       }}</li>
+            <li>Brand      : {{.Brand      }}</li>
+            <li>Status     : {{.Status     }}</li>
+        </ul>
+    </ul>
+    {{end}}
+    <li>Locale           : {{.Locale           }}</li>
+    <li>InternalSignature: {{.InternalSignature}}</li>
+    <li>CustomerId       : {{.CustomerId       }}</li>
+    <li>DeliveryService  : {{.DeliveryService  }}</li>
+    <li>Shardkey         : {{.Shardkey         }}</li>
+    <li>SmId             : {{.SmId             }}</li>
+    <li>DateCreated      : {{.DateCreated      }}</li>
+    <li>OofShard         : {{.OofShard         }}</li>
+</ul>
+</body>
+</html>

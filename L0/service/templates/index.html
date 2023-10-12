@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Orders</title>
+    </head>
+    <body>
+        <ul>
+            {{range .Orders}}
+            <li><a href="{{.Link}}">{{.Uid}}</a></li>
+            {{end}}
+        </ul>
+    </body>
+</html>

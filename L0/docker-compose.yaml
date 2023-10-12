@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+      - ./data:${PGDATA}
+      - ./db_init:/docker-entrypoint-initdb.d/
+    ports:
+      - ${PG_PORT}:5432
+    networks:
+      - data
+
+  nats-streaming:
+    command:
+      - "--cluster_id"
+      - ${NATS_CLUSTER_ID}
+      - "-SDV"
+    image: nats-streaming
+    networks:
+      - nats
+    ports:
+      - ${NATS_PORT}:4222
+
+#  service:
+#    build:
+#      context: "app/service"
+#    environment:
+#      - NATS_HOST_IN=${NATS_HOST_IN}
+#      - NATS_PORT_IN=${NATS_PORT_IN}
+#      - NATS_CLUSTER_ID=${NATS_CLUSTER_ID}
+#      - NATS_SUBJECT=${NATS_SUBJECT}
+#    depends_on:
+#      - streaming
+#    networks:
+#      streaming:
+
+
+networks:
+  data:
+  nats:
+
+volumes:
+  postgres:
